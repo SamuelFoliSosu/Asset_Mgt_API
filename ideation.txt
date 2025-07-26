@@ -1,1 +1,45 @@
-Idea
+Ideation.
+
+Assets - Main attributes
+- type of asset
+- name of asset
+- location of asset
+- owner of asset
+
+Assets - Optional attributes
+- Assigned staff name
+- brand of asset
+- model of asset
+- Serial number of asset
+- OS of asset
+- CPU of asset
+- Memory of asset
+- Hard disk space of asset
+- Screen size of asset
+- IP Address of asset
+
+Asset types
+- Laptop
+- Computer
+- UPS
+- Server (Physical)
+- Server (Virtual)
+- Network Attached Storage (NAS)
+- Access Point
+- Access Control
+- Bluetooth Speaker
+- CCTV Camera
+- CCTV NVR
+- IP Phone
+- PABX Telephone Exchange
+- Enterprise Router
+- MiFi
+- Turbonet Router
+- Barcode Scanner
+- Printer
+- Projector
+- Industrial Scanner
+- Desktop Switch
+- Enterprise Switch
+- Television
+- Webcam
