@@ -43,3 +43,13 @@ Asset types
 - Enterprise Switch
 - Television
 - Webcam
+
+Features/Functionalities/Permissions
+- Add Asset (IT Support/Manager/Accounts/Facility)
+- View Asset (IT Support/Manager/Account/Facility)
+- Edit Asset (IT Support/Manager/Accounts/Facility)
+- Delete Asset (IT Manager/Facility)
+- Assign Asset (Status)
+- Return Asset (Status)
+- Maintain Asset (Status)
+- Decomission Asset (Status)
