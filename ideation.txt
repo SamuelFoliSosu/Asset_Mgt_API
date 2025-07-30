@@ -49,7 +49,13 @@ Features/Functionalities/Permissions
 - View Asset (IT Support/Manager/Account/Facility)
 - Edit Asset (IT Support/Manager/Accounts/Facility)
 - Delete Asset (IT Manager/Facility)
-- Assign Asset (Status)
+- Assign/Transfer Asset (Status)
 - Return Asset (Status)
-- Maintain Asset (Status)
+- Maintain/Repair Asset (Status)
 - Decomission Asset (Status)
+- Missing Asset (Status)
+
+Exceptions to consider
+- Cannot delete an asset unless it is Decomissioned/Returned/Missing
+- Cannot assign/transfer and asset which is under maintenance/repair
+- Assignment is for assets that have "returned" while Transer is for assest that are "assigned"
