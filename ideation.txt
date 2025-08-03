@@ -59,3 +59,5 @@ Exceptions to consider
 - Cannot delete an asset unless it is Decomissioned/Returned/Missing
 - Cannot assign/transfer and asset which is under maintenance/repair
 - Assignment is for assets that have "returned" while Transer is for assest that are "assigned"
+
+Starting to put the plan together
