@@ -45,10 +45,10 @@ Asset types
 - Webcam
 
 Features/Functionalities/Permissions
-- Add Asset (IT Support/Manager/Accounts/Facility)
-- View Asset (IT Support/Manager/Account/Facility)
-- Edit Asset (IT Support/Manager/Accounts/Facility)
-- Delete Asset (IT Manager/Facility)
+- Add Asset (IT Support/IT Manager/Accounts Manager/Facility Manager)
+- View Asset (IT Support/IT Manager/Account Manager/Facility Manager)
+- Edit Asset (IT Support/IT Manager/Accounts Manager/Facility Manager)
+- Delete Asset (IT Manager/Facility Manager)
 - Assign/Transfer Asset (Status)
 - Return Asset (Status)
 - Maintain/Repair Asset (Status)
