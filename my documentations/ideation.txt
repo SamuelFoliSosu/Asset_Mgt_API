@@ -61,3 +61,5 @@ Exceptions to consider
 - Assignment is for assets that have "returned" while Transer is for assest that are "assigned"
 
 Starting to put the plan together
+
+Generated token d9a376ed1596bdd9e950f09860ccd54667863731 for user admin

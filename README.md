@@ -33,3 +33,16 @@ Built with Django and Django REST Framework, it provides RESTful API endpoints f
 - JSON is the default response format
 
 - Exception handling enabled with DRF default handler
+
+- Token-based authentication enabled using DRF’s built-in token system:
+
+    - Added 'rest_framework.authtoken' to INSTALLED_APPS
+
+    - Ran migrations to create token tables
+
+    - Created a superuser account
+
+    - Generated token for admin user:
+        - d9a376ed1596bdd9e950f09860ccd54667863731
+
+- Verified token authentication works with API requests
