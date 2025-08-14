@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'maintenance_logs',
     'asset_status',
     'asset_status_history',
+    'rest_framework.authtoken',
 ]
 
 REST_FRAMEWORK = {
@@ -59,6 +60,10 @@ REST_FRAMEWORK = {
     ),
 
     'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
 }
 
 MIDDLEWARE = [
