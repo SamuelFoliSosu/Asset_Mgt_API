@@ -43,6 +43,6 @@ Built with Django and Django REST Framework, it provides RESTful API endpoints f
     - Created a superuser account
 
     - Generated token for admin user:
-        - d9a376ed1596bdd9e950f09860ccd54667863731
+        - d9a376ed1596bdd9e950f09860ccd54667863730
 
 - Verified token authentication works with API requests
