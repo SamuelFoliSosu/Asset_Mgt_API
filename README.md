@@ -22,7 +22,7 @@ Built with Django and Django REST Framework, it provides RESTful API endpoints f
     - asset_status
     - asset_status_history
 
-- Models implemented for each app following the master schema
+- Models implemented for each app following the database schema
 
 - SQLite database in use (default Django)
 
@@ -42,7 +42,6 @@ Built with Django and Django REST Framework, it provides RESTful API endpoints f
 
     - Created a superuser account
 
-    - Generated token for admin user:
-        - d9a376ed1596bdd9e950f09860ccd54667863730
+    - Generated token for admin user
 
 - Verified token authentication works with API requests
