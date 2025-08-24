@@ -2,11 +2,12 @@ from django.db import models
 from departments.models import Department
 from locations.models import Location
 from roles.models import Role
+from django.contrib.auth.models import AbstractUser
 
-class User(models.Model):
-    department = models.ForeignKey(Department, on_delete=models.CASCADE)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
-    role = models.ForeignKey(Role, on_delete=models.CASCADE)
+class User(AbstractUser):
+    department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
+    location = models.ForeignKey(Location, on_delete=models.SET_NULL,null=True,blank=True)
+    role = models.ForeignKey(Role, on_delete=models.SET_NULL, null=True, blank=True)
     username = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
