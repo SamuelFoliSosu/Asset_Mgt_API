@@ -1,5 +1,5 @@
 from django.db import models
-from departments.models import Department
+from .models import Department
 
 class Location(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
