@@ -7,7 +7,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate
 from rest_framework.permissions import IsAuthenticated
-
+from rest_framework import viewsets
 from .serializers import UserSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
 
@@ -46,3 +46,8 @@ class LogoutView(APIView):
     def post(self, request):
         request.user.auth_token.delete()
         return Response({"message": "Logged out successfully"})
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]  # only logged-in users can access
