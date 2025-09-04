@@ -28,4 +28,6 @@ urlpatterns = [
     path('api/assets/', include('assets.urls')),
     path("api/ownership-history/", include("ownership_history.urls")),
     path("api/maintenance-logs/", include("maintenance_logs.urls")),
+    path('api/asset-status/', include('asset_status.urls')),
+    path('api/asset-status-history/', include('asset_status_history.urls')),
 ]

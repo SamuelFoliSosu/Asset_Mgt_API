@@ -9,7 +9,7 @@ class AssetStatusHistoryViewSet(viewsets.ModelViewSet):
     serializer_class = AssetStatusHistorySerializer
     permission_classes = [IsAuthenticated]
 
-    def create(self, serializer):
+    def perform_create(self, serializer):
         # inject user automatically (serializer handles it)
         serializer.save()
 
