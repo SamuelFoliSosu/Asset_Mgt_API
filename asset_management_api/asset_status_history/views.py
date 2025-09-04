@@ -1,12 +1,17 @@
-from rest_framework import viewsets, permissions, status
+from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .models import AssetStatusHistory
 from .serializers import AssetStatusHistorySerializer
+from rest_framework.permissions import IsAuthenticated
 
 class AssetStatusHistoryViewSet(viewsets.ModelViewSet):
-    queryset = AssetStatusHistory.objects.all()
+    queryset = AssetStatusHistory.objects.all().order_by("-change_date")
     serializer_class = AssetStatusHistorySerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAuthenticated]
+
+    def create(self, serializer):
+        # inject user automatically (serializer handles it)
+        serializer.save()
 
     def update(self, request, *args, **kwargs):
         # Prevent updates to history
