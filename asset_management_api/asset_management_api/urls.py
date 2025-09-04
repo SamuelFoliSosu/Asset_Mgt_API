@@ -26,4 +26,5 @@ urlpatterns = [
     path('api/roles/', include('roles.urls')),
     path('api/owners/', include('owners.urls')),
     path('api/assets/', include('assets.urls')),
+    path("api/ownership-history/", include("ownership_history.urls")),
 ]

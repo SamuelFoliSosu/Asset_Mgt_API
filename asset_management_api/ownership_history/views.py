@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets, permissions
+from .models import OwnershipHistory
+from .serializers import OwnershipHistorySerializer
 
-# Create your views here.
+class OwnershipHistoryViewSet(viewsets.ModelViewSet):
+    queryset = OwnershipHistory.objects.all()
+    serializer_class = OwnershipHistorySerializer
+    permission_classes = [permissions.IsAuthenticated]
