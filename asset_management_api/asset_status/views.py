@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets, permissions
+from .models import AssetStatus
+from .serializers import AssetStatusSerializer
 
-# Create your views here.
+class AssetStatusViewSet(viewsets.ModelViewSet):
+    queryset = AssetStatus.objects.all()
+    serializer_class = AssetStatusSerializer
+    permission_classes = [permissions.IsAuthenticated]
