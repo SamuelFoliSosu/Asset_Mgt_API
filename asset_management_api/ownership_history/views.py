@@ -5,4 +5,4 @@ from .serializers import OwnershipHistorySerializer
 class OwnershipHistoryViewSet(viewsets.ModelViewSet):
     queryset = OwnershipHistory.objects.all()
     serializer_class = OwnershipHistorySerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated] 

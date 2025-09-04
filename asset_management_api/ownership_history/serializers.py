@@ -17,4 +17,4 @@ class OwnershipHistorySerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 "from_owner and to_owner cannot be the same."
             )
-        return data
+        return data 

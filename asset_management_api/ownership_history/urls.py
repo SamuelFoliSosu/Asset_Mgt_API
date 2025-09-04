@@ -6,5 +6,5 @@ router = DefaultRouter()
 router.register(r"", OwnershipHistoryViewSet, basename="ownership-history")
 
 urlpatterns = [
-    path("", include(router.urls)),
+    path("", include(router.urls)), 
 ]
