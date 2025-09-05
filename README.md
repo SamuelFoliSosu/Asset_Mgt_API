@@ -107,6 +107,60 @@ Include the token in the header for protected endpoints:
 
 ---
 
+## Sample Test Requests
+
+### 1. Register a User
+**Request**
+```http
+POST /api/users/register/
+Content-Type: application/json
+
+{
+  "username": "admin1",
+  "email": "admin1@example.com",
+  "first_name": "Admin",
+  "last_name": "One",
+  "password": "testpassword123"
+}
+```
+
+Response
+```json
+{
+  "id": 1,
+  "username": "admin1",
+  "email": "admin1@example.com",
+  "first_name": "Admin",
+  "last_name": "One"
+}
+```
+
+### 2. Login
+**Request**
+```http
+POST /api/users/login/
+Content-Type: application/json
+
+{
+  "username": "admin1",
+  "password": "testpassword123"
+}
+```
+
+Response
+```json
+{
+  "token": "1234567890abcdef1234567890abcdef12345678"
+}
+```
+
+
+
+
+
+
+---
+
 ## Setup Instructions
 1. Clone the repo  
 2. Create and activate a virtual environment  
