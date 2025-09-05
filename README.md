@@ -135,7 +135,7 @@ Response
 }
 ```
 
-### 2. Login
+### 2. User Login
 **Request**
 ```http
 POST /api/users/login/
@@ -147,17 +147,164 @@ Content-Type: application/json
 }
 ```
 
-Response
+**Response**
 ```json
 {
   "token": "1234567890abcdef1234567890abcdef12345678"
 }
 ```
 
+### 3. Create a Department
+**Request**
+```http
+POST /api/departments/
+```
 
+Headers:
+```json
+Authorization: Token 1234567890abcdef1234567890abcdef12345678
+Content-Type: application/json
+```
 
+Body:
+```json
+{
+  "name": "IT Department"
+}
+```
 
+**Response**
+```json
+{
+  "id": 1,
+  "name": "IT Department",
+  "created_at": "2025-09-05T18:00:00Z",
+  "updated_at": "2025-09-05T18:00:00Z"
+}
+```
 
+### 4. List Departments
+**Request**
+```http
+GET /api/departments/
+```
+
+Headers:
+```json
+Authorization: Token 1234567890abcdef1234567890abcdef12345678
+```
+
+**Response**
+```json
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "name": "IT Department",
+      "created_at": "2025-09-05T18:00:00Z",
+      "updated_at": "2025-09-05T18:00:00Z"
+    }
+  ]
+}
+```
+
+### 5. Create an Asset
+**Request**
+```http
+POST /api/assets/
+```
+
+Headers:
+```json
+Authorization: Token 1234567890abcdef1234567890abcdef12345678
+Content-Type: application/json
+```
+
+Body:
+```json
+{
+  "asset_type": "Laptop",
+  "asset_name": "Dell XPS 15",
+  "location_id": 1,
+  "owner_id": 1,
+  "brand": "Dell",
+  "model": "XPS 15 9500",
+  "serial_number": "DX15-2025-001",
+  "operating_system": "Windows 11",
+  "cpu": "Intel i7",
+  "memory": "16GB",
+  "hard_disk_space": "512GB",
+  "screen_size": "15.6",
+  "ip_address": "192.168.1.50",
+  "mac_address": "00:1A:2B:3C:4D:5E",
+  "purchase_date": "2025-01-15",
+  "purchase_price": 2000.00,
+  "current_value": 1800.00,
+  "useful_life_years": 5,
+  "salvage_value": 500.00,
+  "assigned_staff_name": "John Doe"
+}
+```
+
+**Response**
+```json
+{
+  "id": 1,
+  "asset_type": "Laptop",
+  "asset_name": "Dell XPS 15",
+  "location_id": 1,
+  "owner_id": 1,
+  "brand": "Dell",
+  "model": "XPS 15 9500",
+  "serial_number": "DX15-2025-001",
+  "operating_system": "Windows 11",
+  "cpu": "Intel i7",
+  "memory": "16GB",
+  "hard_disk_space": "512GB",
+  "screen_size": "15.6",
+  "ip_address": "192.168.1.50",
+  "mac_address": "00:1A:2B:3C:4D:5E",
+  "purchase_date": "2025-01-15",
+  "purchase_price": 2000.0,
+  "current_value": 1800.0,
+  "useful_life_years": 5,
+  "salvage_value": 500.0,
+  "assigned_staff_name": "John Doe",
+  "created_at": "2025-09-05T18:05:00Z",
+  "updated_at": "2025-09-05T18:05:00Z"
+}
+```
+
+### 6. Search Assets
+**Request**
+```http
+GET /api/assets/?search=Dell
+```
+
+Headers:
+```json
+Authorization: Token 1234567890abcdef1234567890abcdef12345678
+```
+
+**Response**
+```json
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "asset_name": "Dell XPS 15",
+      "serial_number": "DX15-2025-001",
+      "model": "XPS 15 9500"
+    }
+  ]
+}
+```
 
 ---
 
@@ -182,4 +329,3 @@ Response
     python manage.py runserver
 ```
 7. Access API at http://127.0.0.1:8000/
-
