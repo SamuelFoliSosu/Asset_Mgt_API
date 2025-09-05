@@ -114,7 +114,8 @@ Include the token in the header for protected endpoints:
 ```http
 POST /api/users/register/
 Content-Type: application/json
-
+```
+```bash
 {
   "username": "admin1",
   "email": "admin1@example.com",
@@ -140,7 +141,8 @@ Response
 ```http
 POST /api/users/login/
 Content-Type: application/json
-
+```
+```bash
 {
   "username": "admin1",
   "password": "testpassword123"
@@ -161,7 +163,7 @@ POST /api/departments/
 ```
 
 Headers:
-```json
+```bash
 Authorization: Token 1234567890abcdef1234567890abcdef12345678
 Content-Type: application/json
 ```
@@ -190,7 +192,7 @@ GET /api/departments/
 ```
 
 Headers:
-```json
+```bash
 Authorization: Token 1234567890abcdef1234567890abcdef12345678
 ```
 
@@ -218,7 +220,7 @@ POST /api/assets/
 ```
 
 Headers:
-```json
+```bash
 Authorization: Token 1234567890abcdef1234567890abcdef12345678
 Content-Type: application/json
 ```
@@ -285,7 +287,7 @@ GET /api/assets/?search=Dell
 ```
 
 Headers:
-```json
+```bash
 Authorization: Token 1234567890abcdef1234567890abcdef12345678
 ```
 
