@@ -113,12 +113,19 @@ Include the token in the header for protected endpoints:
 3. Install dependencies:  
 ```bash
     pip install -r requirements.txt
+```
 4. Run migrations:
+```bash
     python manage.py makemigrations
     python manage.py migrate
+```
 5. Create a superuser:
+```bash
     python manage.py createsuperuser
+```
 6. Start the server:
+```bash
     python manage.py runserver
+```
 7. Access API at http://127.0.0.1:8000/
 
