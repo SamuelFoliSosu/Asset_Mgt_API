@@ -108,29 +108,6 @@ Include the token in the header for protected endpoints:
 
 ## Sample Test Requests
 
-### Create Role
-**Request**
-```http
-POST /api/roles/
-```
-```bash
-{
-  "name": "Manager",
-  "description": "Manages assets and users"
-}
-```
-
-**Response**
-```json
-{
-  "id": 1,
-  "name": "Manager",
-  "description": "Manages assets and users",
-  "created_at": "2025-09-05T19:10:00Z",
-  "updated_at": "2025-09-05T19:10:00Z"
-}
-```
-
 ### Register a User
 **Request**
 ```http
@@ -175,6 +152,29 @@ Content-Type: application/json
 ```json
 {
   "token": "1234567890abcdef1234567890abcdef12345678"
+}
+```
+
+### Create Role
+**Request**
+```http
+POST /api/roles/
+```
+```bash
+{
+  "name": "Manager",
+  "description": "Manages assets and users"
+}
+```
+
+**Response**
+```json
+{
+  "id": 1,
+  "name": "Manager",
+  "description": "Manages assets and users",
+  "created_at": "2025-09-05T19:10:00Z",
+  "updated_at": "2025-09-05T19:10:00Z"
 }
 ```
 
