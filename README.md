@@ -109,7 +109,30 @@ Include the token in the header for protected endpoints:
 
 ## Sample Test Requests
 
-### 1. Register a User
+### Create Role
+**Request**
+```http
+POST /api/roles/
+```
+```bash
+{
+  "name": "Manager",
+  "description": "Manages assets and users"
+}
+```
+
+**Response**
+```json
+{
+  "id": 1,
+  "name": "Manager",
+  "description": "Manages assets and users",
+  "created_at": "2025-09-05T19:10:00Z",
+  "updated_at": "2025-09-05T19:10:00Z"
+}
+```
+
+### Register a User
 **Request**
 ```http
 POST /api/users/register/
@@ -125,7 +148,7 @@ Content-Type: application/json
 }
 ```
 
-Response
+**Response**
 ```json
 {
   "id": 1,
@@ -136,7 +159,7 @@ Response
 }
 ```
 
-### 2. User Login
+### User Login
 **Request**
 ```http
 POST /api/users/login/
@@ -156,7 +179,7 @@ Content-Type: application/json
 }
 ```
 
-### 3. Create a Department
+### Create a Department
 **Request**
 ```http
 POST /api/departments/
@@ -169,7 +192,7 @@ Content-Type: application/json
 ```
 
 Body:
-```json
+```bash
 {
   "name": "IT Department"
 }
@@ -185,7 +208,7 @@ Body:
 }
 ```
 
-### 4. List Departments
+### List Departments
 **Request**
 ```http
 GET /api/departments/
@@ -213,7 +236,61 @@ Authorization: Token 1234567890abcdef1234567890abcdef12345678
 }
 ```
 
-### 5. Create an Asset
+### Create a Location
+**Request**
+```http
+POST /api/locations/
+```
+```bash
+{
+  "department_id": 1,
+  "name": "Head Office - Accra"
+}
+```
+
+**Response**
+```json
+{
+  "id": 1,
+  "department_id": 1,
+  "name": "Head Office - Accra",
+  "created_at": "2025-09-05T19:05:00Z",
+  "updated_at": "2025-09-05T19:05:00Z"
+}
+```
+
+### Create an Asset Owner
+**Request**
+```http
+POST /api/owners/
+```
+```bash
+{
+  "department_id": 1,
+  "location_id": 1,
+  "name": "IT Admin",
+  "owner_type": "Staff",
+  "contact_email": "itadmin@example.com",
+  "phone": "+233200000000"
+}
+```
+
+**Response**
+```json
+{
+  "id": 1,
+  "department_id": 1,
+  "location_id": 1,
+  "name": "IT Admin",
+  "owner_type": "Staff",
+  "contact_email": "itadmin@example.com",
+  "phone": "+233200000000",
+  "created_at": "2025-09-05T19:20:00Z",
+  "updated_at": "2025-09-05T19:20:00Z"
+}
+```
+
+### Create an Asset
 **Request**
 ```http
 POST /api/assets/
@@ -226,7 +303,7 @@ Content-Type: application/json
 ```
 
 Body:
-```json
+```bash
 {
   "asset_type": "Laptop",
   "asset_name": "Dell XPS 15",
@@ -280,7 +357,7 @@ Body:
 }
 ```
 
-### 6. Search Assets
+### Search Assets
 **Request**
 ```http
 GET /api/assets/?search=Dell
@@ -305,6 +382,125 @@ Authorization: Token 1234567890abcdef1234567890abcdef12345678
       "model": "XPS 15 9500"
     }
   ]
+}
+```
+
+### Ownership History
+**Request**
+```http
+POST /api/ownership-history/
+```
+```bash
+{
+  "asset_id": 2,
+  "from_owner_id": 1,
+  "to_owner_id": 2,
+  "transfer_date": "2025-09-05",
+  "condition_on_transfer": "Good",
+  "comment": "Transferred to new staff"
+}
+```
+
+**Response**
+```json
+{
+  "id": 1,
+  "asset_id": 2,
+  "from_owner_id": 1,
+  "to_owner_id": 2,
+  "transfer_date": "2025-09-05",
+  "return_date": null,
+  "condition_on_transfer": "Good",
+  "comment": "Transferred to new staff",
+  "created_at": "2025-09-05T19:30:00Z",
+  "updated_at": "2025-09-05T19:30:00Z"
+}
+```
+
+### Maintenance Logs
+**Request**
+```http
+POST /api/maintenance-logs/
+```
+```bash
+{
+  "asset_id": 2,
+  "performed_by_user_id": 1,
+  "maintenance_date": "2025-09-05",
+  "maintenance_type": "Hardware Check",
+  "status": "Completed",
+  "next_due_date": "2025-12-05",
+  "cost": 150.00,
+  "action_taken": "Replaced thermal paste",
+  "issue_description": "Overheating issue"
+}
+```
+
+**Response**
+```json
+{
+  "id": 1,
+  "asset_id": 2,
+  "performed_by_user_id": 1,
+  "maintenance_date": "2025-09-05",
+  "maintenance_type": "Hardware Check",
+  "status": "Completed",
+  "next_due_date": "2025-12-05",
+  "cost": 150.0,
+  "action_taken": "Replaced thermal paste",
+  "issue_description": "Overheating issue",
+  "created_at": "2025-09-05T19:35:00Z",
+  "updated_at": "2025-09-05T19:35:00Z"
+}
+```
+
+### Asset Status
+**Request**
+```http
+POST /api/asset-status/
+```
+```bash
+{
+  "status_name": "In Use",
+  "description": "Asset is actively being used"
+}
+```
+
+**Response**
+```json
+{
+  "id": 1,
+  "status_name": "In Use",
+  "description": "Asset is actively being used",
+  "created_at": "2025-09-05T19:40:00Z",
+  "updated_at": "2025-09-05T19:40:00Z"
+}
+```
+
+### Asset Status History
+**Request**
+```http
+POST /api/asset-status-history/
+```
+```bash
+{
+  "asset_id": 2,
+  "status_id": 1,
+  "comment": "Assigned to staff member"
+}
+```
+
+**Response**
+```json
+{
+  "id": 1,
+  "asset_id": 2,
+  "status_id": 1,
+  "changed_by_user_id": 1,
+  "change_date": "2025-09-05T19:45:00Z",
+  "comment": "Assigned to staff member",
+  "created_at": "2025-09-05T19:45:00Z",
+  "updated_at": "2025-09-05T19:45:00Z"
 }
 ```
 
