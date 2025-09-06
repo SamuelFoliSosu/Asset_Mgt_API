@@ -38,14 +38,13 @@ The API supports **token-based authentication**, **pagination**, and **role-base
 
 ---
 
-## Key Features
+## Key Features at end of Development
 - RESTful CRUD endpoints for all models  
 - Pagination (20 items per page) for list endpoints  
 - Token-based authentication  
 - Role-based permissions for sensitive actions  
 - Filtering and searching for assets  
 - Automated ownership and status history logging  
-- Swagger and Redoc API documentation
 
 ---
 
