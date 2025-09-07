@@ -15,10 +15,10 @@ The API supports **token-based authentication**, **pagination**, and **role-base
 ---
 
 ## Tech Stack
-- **Backend:** Django 5.2, Django REST Framework  
-- **Authentication:** DRF Token Authentication  
-- **Database:** SQLite (default Django)  
-- **Documentation:** Swagger & Redoc via drf-yasg  
+- **Backend:** Django 5.2, Django REST Framework 
+- **Authentication:** DRF Token Authentication 
+- **Database:** SQLite (default Django) 
+- **Documentation:** Swagger & Redoc via drf-yasg 
 
 ---
 
@@ -38,23 +38,23 @@ The API supports **token-based authentication**, **pagination**, and **role-base
 
 ---
 
-## Key Features at end of Development
-- RESTful CRUD endpoints for all models  
-- Pagination (20 items per page) for list endpoints  
-- Token-based authentication  
-- Role-based permissions for sensitive actions  
-- Filtering and searching for assets  
-- Automated ownership and status history logging  
+## Key Features
+- RESTful CRUD endpoints for all models 
+- Pagination (20 items per page) for list endpoints 
+- Token-based authentication 
+- Role-based permissions for sensitive actions 
+- Filtering and searching for assets 
+- Automated ownership and status history logging 
 
 ---
 
 ## Authentication
-1. **User Registration**: `POST /api/users/register/`  
-2. **Login**: `POST /api/users/login/` → Returns a token  
-3. **Logout**: `POST /api/users/logout/`  
+1. **User Registration**: `POST /api/register/` 
+2. **Login**: `POST /api/login/` → Returns a token 
+3. **Logout**: `POST /api/logout/` 
 
 Include the token in the header for protected endpoints:
- - Authorization: Token <your_token_here>
+ - Authorization: Token <your_token_here>
 
 
 ---
@@ -69,8 +69,8 @@ Include the token in the header for protected endpoints:
 | Location Detail | `/api/locations/<id>/` | GET, PUT, PATCH, DELETE | Retrieve, update, or delete a location |
 | Roles | `/api/roles/` | GET, POST | List all roles / Create a role |
 | Role Detail | `/api/roles/<id>/` | GET, PUT, PATCH, DELETE | Retrieve, update, or delete a role |
-| Users | `/api/users/` | GET, POST | List all users / Create a user |
-| User Detail | `/api/users/<id>/` | GET, PUT, PATCH, DELETE | Retrieve, update, or delete a user |
+| Users | `/api/users/` | GET | List all users (admin only) |
+| User Detail | `/api/users/<id>/` | GET, PUT, PATCH, DELETE | Retrieve, update, or delete a user (self or admin) |
 | Owners | `/api/owners/` | GET, POST | List all owners / Create an owner |
 | Owner Detail | `/api/owners/<id>/` | GET, PUT, PATCH, DELETE | Retrieve, update, or delete an owner |
 | Assets | `/api/assets/` | GET, POST | List all assets / Create an asset |
@@ -87,22 +87,51 @@ Include the token in the header for protected endpoints:
 ---
 
 ## API Documentation
-- Swagger UI: `/swagger/`  
-- Redoc: `/redoc/`  
+- Swagger UI: `/swagger/` 
+- Redoc: `/redoc/` 
 
 ---
 
 ## Pagination
-- Default page size: 20 items per list endpoint  
+- Default page size: 20 items per list endpoint 
 - Query param: `?page=<number>`
 
 ---
 
 ## Error Handling
-- **404 Not Found** – Resource does not exist  
-- **400 Bad Request** – Validation errors  
-- **401 Unauthorized** – Missing or invalid token  
-- **403 Forbidden** – Access denied for your role  
+- **404 Not Found** – Resource does not exist 
+- **400 Bad Request** – Validation errors 
+- **401 Unauthorized** – Missing or invalid token 
+- **403 Forbidden** – Access denied for your role 
+
+---
+
+## Setup Instructions
+1. Clone the repo  
+2. Create and activate a virtual environment  
+3. Install dependencies:  
+```bash
+    pip install -r requirements.txt
+```
+4. Set up environment variables for production:
+```bash
+    export DJANGO_SECRET_KEY='your-secure-secret-key-here'
+    export DJANGO_DEBUG='False' # Or 'True' for local dev
+```
+5. Run migrations:
+```bash
+    python manage.py makemigrations
+    python manage.py migrate
+```
+6. Create a superuser:
+```bash
+    python manage.py createsuperuser
+```
+7. Start the server:
+```bash
+    python manage.py runserver
+```
+8. Access API at http://127.0.0.1:8000/
 
 ---
 
@@ -111,7 +140,7 @@ Include the token in the header for protected endpoints:
 ### Register a User
 **Request**
 ```http
-POST /api/users/register/
+POST /api/register/
 Content-Type: application/json
 ```
 ```bash
@@ -127,18 +156,14 @@ Content-Type: application/json
 **Response**
 ```json
 {
-  "id": 1,
-  "username": "admin1",
-  "email": "admin1@example.com",
-  "first_name": "Admin",
-  "last_name": "One"
+  "message": "User registered successfully"
 }
 ```
 
 ### User Login
 **Request**
 ```http
-POST /api/users/login/
+POST /api/login/
 Content-Type: application/json
 ```
 ```bash
@@ -151,7 +176,10 @@ Content-Type: application/json
 **Response**
 ```json
 {
-  "token": "1234567890abcdef1234567890abcdef12345678"
+  "token": "1234567890abcdef1234567890abcdef12345678",
+  "user_id": 1,
+  "username": "admin1",
+  "email": "admin1@example.com"
 }
 ```
 
@@ -265,7 +293,6 @@ POST /api/owners/
 ```
 ```bash
 {
-  "department_id": 1,
   "location_id": 1,
   "name": "IT Admin",
   "owner_type": "Staff",
@@ -277,15 +304,14 @@ POST /api/owners/
 **Response**
 ```json
 {
-  "id": 1,
-  "department_id": 1,
-  "location_id": 1,
-  "name": "IT Admin",
-  "owner_type": "Staff",
-  "contact_email": "itadmin@example.com",
-  "phone": "+233200000000",
-  "created_at": "2025-09-05T19:20:00Z",
-  "updated_at": "2025-09-05T19:20:00Z"
+  "id": 1,
+  "location": 1,
+  "name": "IT Admin",
+  "owner_type": "Staff",
+  "contact_email": "itadmin@example.com",
+  "phone": "+233200000000",
+  "created_at": "2025-09-05T19:20:00Z",
+  "updated_at": "2025-09-05T19:20:00Z"
 }
 ```
 
@@ -502,27 +528,3 @@ POST /api/asset-status-history/
   "updated_at": "2025-09-05T19:45:00Z"
 }
 ```
-
----
-
-## Setup Instructions
-1. Clone the repo  
-2. Create and activate a virtual environment  
-3. Install dependencies:  
-```bash
-    pip install -r requirements.txt
-```
-4. Run migrations:
-```bash
-    python manage.py makemigrations
-    python manage.py migrate
-```
-5. Create a superuser:
-```bash
-    python manage.py createsuperuser
-```
-6. Start the server:
-```bash
-    python manage.py runserver
-```
-7. Access API at http://127.0.0.1:8000/

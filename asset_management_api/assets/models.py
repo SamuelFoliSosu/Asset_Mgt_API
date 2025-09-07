@@ -5,8 +5,8 @@ from owners.models import Owner
 class Asset(models.Model):
     asset_type = models.CharField(max_length=100)
     asset_name = models.CharField(max_length=150)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name='assets')
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, related_name='assets')
     brand = models.CharField(max_length=50, blank=True)
     model = models.CharField(max_length=50, blank=True)
     serial_number = models.CharField(max_length=50, blank=True)

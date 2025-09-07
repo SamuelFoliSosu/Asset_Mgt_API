@@ -1,17 +1,24 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, viewsets
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import get_user_model
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
-from django.contrib.auth import authenticate
-from rest_framework.permissions import IsAuthenticated
-from rest_framework import viewsets
-from .serializers import UserSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
+from .serializers import UserSerializer
 
 User = get_user_model()
+
+class IsSelfOrAdmin(permissions.BasePermission):
+    """
+    Custom permission to allow users to edit their own profile, but only admins to edit others.
+    """
+    def has_object_permission(self, request, view, obj):
+        if request.user.is_staff:
+            return True
+        return obj == request.user
+
 
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -27,19 +34,6 @@ class RegisterView(generics.CreateAPIView):
             status=status.HTTP_201_CREATED
         )
 
-class LoginView(ObtainAuthToken):
-    permission_classes = [AllowAny]
-
-    def post(self, request, *args, **kwargs):
-        response = super().post(request, *args, **kwargs)
-        token = Token.objects.get(key=response.data['token'])
-        return Response({
-            "token": token.key,
-            "user_id": token.user.id,
-            "username": token.user.username,
-            "email": token.user.email,
-        })
-    
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -50,4 +44,15 @@ class LogoutView(APIView):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]  # only logged-in users can access
+    permission_classes = [IsAuthenticated, IsSelfOrAdmin]
+    
+    def get_permissions(self):
+        """
+        Instantiate and return the list of permissions that this view requires.
+        """
+        if self.action in ['retrieve', 'update', 'partial_update', 'destroy']:
+            self.permission_classes = [IsAuthenticated, IsSelfOrAdmin]
+        else:
+            self.permission_classes = [permissions.IsAdminUser]
+
+        return [permission() for permission in self.permission_classes]

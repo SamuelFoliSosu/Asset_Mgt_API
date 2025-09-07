@@ -1,13 +1,13 @@
 from django.db import models
 from assets.models import Asset
-from users.models import User  # assuming you have a Users app
+from users.models import User # assuming you have a Users app
 
 class MaintenanceLog(models.Model):
     # The asset that was maintained or repaired
-    asset = models.ForeignKey(Asset, on_delete=models.CASCADE)
+    asset = models.ForeignKey(Asset, on_delete=models.CASCADE, related_name='maintenance_logs')
     
     # The user who performed the maintenance (e.g., IT Manager)
-    performed_by_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    performed_by_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='maintenance_actions')
     
     # Date when maintenance happened
     maintenance_date = models.DateField()

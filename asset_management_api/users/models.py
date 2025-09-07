@@ -5,17 +5,17 @@ from roles.models import Role
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
-    department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
-    location = models.ForeignKey(Location, on_delete=models.SET_NULL,null=True,blank=True)
-    role = models.ForeignKey(Role, on_delete=models.SET_NULL, null=True, blank=True)
+    department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True, related_name='users')
+    location = models.ForeignKey(Location, on_delete=models.SET_NULL,null=True,blank=True, related_name='users')
+    role = models.ForeignKey(Role, on_delete=models.SET_NULL, null=True, blank=True, related_name='users')
     username = models.CharField(max_length=150, unique=True)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100, blank=True)
+    last_name = models.CharField(max_length=100, blank=True)
     email = models.EmailField(unique=True)
-    password_hash = models.CharField(max_length=128)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
+    REQUIRED_FIELDS = ['email']
 
     def __str__(self):
-        # return self.username #returning only username
-        return f"{self.username} is ({self.last_name} {self.first_name})" #returning username and full name
+        return self.username
