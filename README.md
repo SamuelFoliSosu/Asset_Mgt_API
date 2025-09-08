@@ -279,7 +279,32 @@ POST /api/locations/
 ```json
 {
   "id": 1,
-  "department_id": 1,
+  "department": 1,
+  "name": "Head Office - Accra",
+  "created_at": "2025-09-05T19:05:00Z",
+  "updated_at": "2025-09-05T19:05:00Z"
+}
+```
+
+### Update/Change a Location
+**Request**
+```http
+PUT /api/locations/1/
+
+where 1 is the <id>
+```
+```bash
+{
+  "department": 1,
+  "name": "Warehouse - Kasoa"
+}
+```
+
+**Response**
+```json
+{
+  "id": 1,
+  "department": 1,
   "name": "Head Office - Accra",
   "created_at": "2025-09-05T19:05:00Z",
   "updated_at": "2025-09-05T19:05:00Z"
@@ -316,7 +341,7 @@ POST /api/owners/
 ```
 ```bash
 {
-  "location_id": 1,
+  "location": 1,
   "name": "IT Admin",
   "owner_type": "Staff",
   "contact_email": "itadmin@example.com",

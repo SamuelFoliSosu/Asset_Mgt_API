@@ -1,0 +1,15 @@
+DEMO VIDEO RESOURCES
+--------------------------------------------
+POST - LOGIN
+http://127.0.0.1:8000/api/login/
+{
+  "username": "Capstone",
+  "password": "Capstone"
+}
+------------------------------------------------
+GET - LIST LOCATIONS
+http://127.0.0.1:8000/api/locations/
+--------------------------------------------
+GET - LIST DEPARTMENTS
+http://127.0.0.1:8000/api/departments/
+----------------------------------------------
