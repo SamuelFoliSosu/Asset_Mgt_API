@@ -19,6 +19,9 @@ class IsSelfOrAdmin(permissions.BasePermission):
             return True
         return obj == request.user
 
+class LoginView(ObtainAuthToken):
+    permission_classes = [permissions.AllowAny]
+    serializer_class = UserSerializer
 
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
