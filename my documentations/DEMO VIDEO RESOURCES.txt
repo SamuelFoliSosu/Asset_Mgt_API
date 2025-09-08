@@ -47,3 +47,13 @@ http://127.0.0.1:8000/api/assets/2/
 GET - SEARCH AN ASSET
 http://127.0.0.1:8000/api/assets/?search=HP
 ----------------------------------------
+POST - CHANGE OWNER OF AN ASSET
+http://127.0.0.1:8000/api/ownership-history/
+{
+  "asset": 2,
+  "from_owner": 1,
+  "to_owner": 2,
+  "transfer_date": "2025-09-05",
+  "condition_on_transfer": "Good",
+  "comment": "Transferred to new staff"
+}

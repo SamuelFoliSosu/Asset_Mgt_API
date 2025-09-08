@@ -468,8 +468,8 @@ POST /api/ownership-history/
 ```bash
 {
   "asset": 2,
-  "from_owner_id": 1,
-  "to_owner_id": 2,
+  "from_owner": 1,
+  "to_owner": 2,
   "transfer_date": "2025-09-05",
   "condition_on_transfer": "Good",
   "comment": "Transferred to new staff"
@@ -481,8 +481,8 @@ POST /api/ownership-history/
 {
   "id": 1,
   "asset": 2,
-  "from_owner_id": 1,
-  "to_owner_id": 2,
+  "from_owner": 1,
+  "to_owner": 2,
   "transfer_date": "2025-09-05",
   "return_date": null,
   "condition_on_transfer": "Good",
