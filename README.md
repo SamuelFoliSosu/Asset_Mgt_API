@@ -270,7 +270,7 @@ POST /api/locations/
 ```
 ```bash
 {
-  "department_id": 1,
+  "department": 1,
   "name": "Head Office - Accra"
 }
 ```
@@ -283,6 +283,29 @@ POST /api/locations/
   "name": "Head Office - Accra",
   "created_at": "2025-09-05T19:05:00Z",
   "updated_at": "2025-09-05T19:05:00Z"
+}
+```
+
+### Asset Status
+**Request**
+```http
+POST /api/asset-status/
+```
+```bash
+{
+  "status_name": "In Use",
+  "description": "Asset is actively being used"
+}
+```
+
+**Response**
+```json
+{
+  "id": 1,
+  "status_name": "In Use",
+  "description": "Asset is actively being used",
+  "created_at": "2025-09-05T19:40:00Z",
+  "updated_at": "2025-09-05T19:40:00Z"
 }
 ```
 
@@ -304,14 +327,16 @@ POST /api/owners/
 **Response**
 ```json
 {
-  "id": 1,
-  "location": 1,
-  "name": "IT Admin",
-  "owner_type": "Staff",
-  "contact_email": "itadmin@example.com",
-  "phone": "+233200000000",
-  "created_at": "2025-09-05T19:20:00Z",
-  "updated_at": "2025-09-05T19:20:00Z"
+  "id":1,
+  "location":1,
+  "location_name":"Head Office - Accra",
+  "department_name":"IT Department",
+  "name":"IT Admin",
+  "owner_type":"Staff",
+  "contact_email":"itadmin@example.com",
+  "phone":"+233200000000",
+  "created_at":"2025-09-08T01:03:27.123506Z",
+  "updated_at":"2025-09-08T01:03:27.123530Z"
 }
 ```
 
@@ -332,8 +357,8 @@ Body:
 {
   "asset_type": "Laptop",
   "asset_name": "Dell XPS 15",
-  "location_id": 1,
-  "owner_id": 1,
+  "location": 1,
+  "owner": 1,
   "brand": "Dell",
   "model": "XPS 15 9500",
   "serial_number": "DX15-2025-001",
@@ -359,8 +384,6 @@ Body:
   "id": 1,
   "asset_type": "Laptop",
   "asset_name": "Dell XPS 15",
-  "location_id": 1,
-  "owner_id": 1,
   "brand": "Dell",
   "model": "XPS 15 9500",
   "serial_number": "DX15-2025-001",
@@ -378,7 +401,9 @@ Body:
   "salvage_value": 500.0,
   "assigned_staff_name": "John Doe",
   "created_at": "2025-09-05T18:05:00Z",
-  "updated_at": "2025-09-05T18:05:00Z"
+  "updated_at": "2025-09-05T18:05:00Z",
+  "location": 1,
+  "owner": 1
 }
 ```
 
@@ -476,29 +501,6 @@ POST /api/maintenance-logs/
   "issue_description": "Overheating issue",
   "created_at": "2025-09-05T19:35:00Z",
   "updated_at": "2025-09-05T19:35:00Z"
-}
-```
-
-### Asset Status
-**Request**
-```http
-POST /api/asset-status/
-```
-```bash
-{
-  "status_name": "In Use",
-  "description": "Asset is actively being used"
-}
-```
-
-**Response**
-```json
-{
-  "id": 1,
-  "status_name": "In Use",
-  "description": "Asset is actively being used",
-  "created_at": "2025-09-05T19:40:00Z",
-  "updated_at": "2025-09-05T19:40:00Z"
 }
 ```
 
