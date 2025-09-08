@@ -467,7 +467,7 @@ POST /api/ownership-history/
 ```
 ```bash
 {
-  "asset_id": 2,
+  "asset": 2,
   "from_owner_id": 1,
   "to_owner_id": 2,
   "transfer_date": "2025-09-05",
@@ -480,7 +480,7 @@ POST /api/ownership-history/
 ```json
 {
   "id": 1,
-  "asset_id": 2,
+  "asset": 2,
   "from_owner_id": 1,
   "to_owner_id": 2,
   "transfer_date": "2025-09-05",
@@ -499,7 +499,7 @@ POST /api/maintenance-logs/
 ```
 ```bash
 {
-  "asset_id": 2,
+  "asset": 2,
   "performed_by_user_id": 1,
   "maintenance_date": "2025-09-05",
   "maintenance_type": "Hardware Check",
@@ -515,7 +515,7 @@ POST /api/maintenance-logs/
 ```json
 {
   "id": 1,
-  "asset_id": 2,
+  "asset": 2,
   "performed_by_user_id": 1,
   "maintenance_date": "2025-09-05",
   "maintenance_type": "Hardware Check",
@@ -536,8 +536,8 @@ POST /api/asset-status-history/
 ```
 ```bash
 {
-  "asset_id": 2,
-  "status_id": 1,
+  "asset": 2,
+  "status": 1,
   "comment": "Assigned to staff member"
 }
 ```
@@ -546,8 +546,8 @@ POST /api/asset-status-history/
 ```json
 {
   "id": 1,
-  "asset_id": 2,
-  "status_id": 1,
+  "asset": 2,
+  "status": 1,
   "changed_by_user_id": 1,
   "change_date": "2025-09-05T19:45:00Z",
   "comment": "Assigned to staff member",

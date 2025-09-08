@@ -13,12 +13,6 @@ http://127.0.0.1:8000/api/locations/
 GET - LIST DEPARTMENTS
 http://127.0.0.1:8000/api/departments/
 ----------------------------------------
-GET - LIST ASSETS
-http://127.0.0.1:8000/api/assets/
-----------------------------------------
-GET - SEARCH AN ASSET
-http://127.0.0.1:8000/api/assets/?search=HP
-----------------------------------------
 POST - ADD AN ASSET
 http://127.0.0.1:8000/api/assets/
 {
@@ -43,3 +37,13 @@ http://127.0.0.1:8000/api/assets/
   "salvage_value": 300.00,
   "assigned_staff_name": "Conference Room"
 }
+----------------------------------------
+GET - LIST ASSETS
+http://127.0.0.1:8000/api/assets/
+----------------------------------------
+GET - LIST AN ASSET
+http://127.0.0.1:8000/api/assets/2/
+----------------------------------------
+GET - SEARCH AN ASSET
+http://127.0.0.1:8000/api/assets/?search=HP
+----------------------------------------
