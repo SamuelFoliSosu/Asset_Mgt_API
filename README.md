@@ -44,7 +44,7 @@ The API supports **token-based authentication**, **pagination**, and **role-base
 - Token-based authentication 
 - Role-based permissions for sensitive actions 
 - Filtering and searching for assets 
-- Automated ownership and status history logging 
+- Ownership and status history logging 
 
 ---
 

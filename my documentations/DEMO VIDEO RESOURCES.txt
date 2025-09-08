@@ -1,15 +1,45 @@
 DEMO VIDEO RESOURCES
---------------------------------------------
+----------------------------------------
 POST - LOGIN
 http://127.0.0.1:8000/api/login/
 {
   "username": "Capstone",
   "password": "Capstone"
 }
-------------------------------------------------
+----------------------------------------
 GET - LIST LOCATIONS
 http://127.0.0.1:8000/api/locations/
---------------------------------------------
+----------------------------------------
 GET - LIST DEPARTMENTS
 http://127.0.0.1:8000/api/departments/
-----------------------------------------------
+----------------------------------------
+GET - LIST ASSETS
+http://127.0.0.1:8000/api/assets/
+----------------------------------------
+GET - SEARCH AN ASSET
+http://127.0.0.1:8000/api/assets/?search=HP
+----------------------------------------
+POST - ADD AN ASSET
+http://127.0.0.1:8000/api/assets/
+{
+  "asset_type": "Projector",
+  "asset_name": "Epson PowerLite Pro",
+  "location": 1,
+  "owner": 1,
+  "brand": "Epson",
+  "model": "PowerLite Pro G7905U",
+  "serial_number": "EPL-PRO-2025-003",
+  "operating_system": "N/A",
+  "cpu": "N/A",
+  "memory": "N/A",
+  "hard_disk_space": "N/A",
+  "screen_size": "N/A",
+  "ip_address": "192.168.1.80",
+  "mac_address": "00:3A:4B:5C:6D:7E",
+  "purchase_date": "2025-04-01",
+  "purchase_price": 3500.00,
+  "current_value": 3000.00,
+  "useful_life_years": 8,
+  "salvage_value": 300.00,
+  "assigned_staff_name": "Conference Room"
+}
