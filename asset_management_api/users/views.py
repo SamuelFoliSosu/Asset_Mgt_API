@@ -47,6 +47,8 @@ class LogoutView(APIView):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    # permission_classes = [IsAuthenticated]
+    
     permission_classes = [IsAuthenticated, IsSelfOrAdmin]
     
     def get_permissions(self):
